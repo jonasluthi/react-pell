@@ -1,21 +1,21 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import pell from 'pell'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import pell from "pell";
 
-import 'pell/dist/pell.min.css'
+import "pell/dist/pell.min.css";
 
 // pass pell object to custom actions callback
-const mapActions = (actions) => {
+const mapActions = actions => {
   if (actions) {
-    return actions.map((e) => {
-      if (typeof e === 'object' && e.result) {
-        return { ...e, result: () => e.result(pell) }
+    return actions.map(e => {
+      if (typeof e === "object" && e.result) {
+        return { ...e, result: () => e.result(pell) };
       }
-      return e
-    })
+      return e;
+    });
   }
-  return actions
-}
+  return actions;
+};
 
 class Editor extends Component {
   componentDidMount() {
@@ -26,8 +26,8 @@ class Editor extends Component {
       actionBarClass,
       buttonClass,
       contentClass,
-      defaultContent,
-    } = this.props
+      defaultContent
+    } = this.props;
 
     // initialize pell editor
     pell.init({
@@ -38,26 +38,31 @@ class Editor extends Component {
       classes: {
         actionbar: actionBarClass,
         button: buttonClass,
-        content: contentClass,
-      },
-    })
+        content: contentClass
+      }
+    });
 
     // set default content
-    this.container.content.innerHTML = defaultContent
+    this.container.content.innerHTML = defaultContent;
   }
 
   componentDidUpdate() {
-    const { defaultContent } = this.props
+    const { defaultContent } = this.props;
     if (this.container.content.innerHTML !== defaultContent) {
-      this.container.content.innerHTML = defaultContent
+      this.container.content.innerHTML = defaultContent;
     }
   }
 
   // return the editor content
-  getContent = () => this.container.content.innerHTML
+  getContent = () => this.container.content.innerHTML;
 
   render() {
-    return <div ref={e => (this.container = e)} className={this.props.containerClass} />
+    return (
+      <div
+        ref={e => (this.container = e)}
+        className={this.props.containerClass}
+      />
+    );
   }
 }
 
@@ -69,29 +74,29 @@ Editor.propTypes = {
   containerClass: PropTypes.string,
   actionBarClass: PropTypes.string,
   buttonClass: PropTypes.string,
-  contentClass: PropTypes.string,
-}
+  contentClass: PropTypes.string
+};
 
 Editor.defaultProps = {
-  defaultContent: '',
+  defaultContent: "",
   styleWithCSS: false,
   actions: [
-    'bold',
-    'italic',
-    'underline',
-    'strikethrough',
-    'heading1',
-    'heading2',
-    'olist',
-    'ulist',
-    'quote',
-    'code',
-    'line',
+    "bold",
+    "italic",
+    "underline",
+    "strikethrough",
+    "heading1",
+    "heading2",
+    "olist",
+    "ulist",
+    "quote",
+    "code",
+    "line"
   ],
-  containerClass: 'pell-container',
-  actionBarClass: 'pell-actionbar',
-  buttonClass: 'pell-button',
-  contentClass: 'pell-content',
-}
+  containerClass: "pell-container",
+  actionBarClass: "pell-actionbar",
+  buttonClass: "pell-button",
+  contentClass: "pell-content"
+};
 
-export default Editor
+export default Editor;

@@ -1,4 +1,4 @@
-import Editor from '../../Editor'
-import withMarkdown from './withMarkdown.jsx'
+import Editor from "../../Editor";
+import withMarkdown from "./withMarkdown.jsx";
 
-export default withMarkdown(Editor)
+export default withMarkdown(Editor);
