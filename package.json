@@ -22,7 +22,7 @@
   },
   "prepack": "yarn build",
   "dependencies": {
-    "pell": "^1.0.1",
+    "pell": "^1.0.4",
     "showdown": "^1.8.6",
     "turndown": "^4.0.1"
   },
